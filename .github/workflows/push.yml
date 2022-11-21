@@ -18,10 +18,10 @@ jobs:
           jscrambler-config-path: jscrambler.json
           files-src: |
             actiontest/*
-          files-dest: dist-obfuscated/
+          files-dest: actiontest-obfuscated/
       - name: Upload protected code as a GitHub artifact
         uses: actions/upload-artifact@v3
         with:
           name: protected-source-code
-          path: dist-obfuscated/
+          path: actiontest-obfuscated/
           retention-days: 1
