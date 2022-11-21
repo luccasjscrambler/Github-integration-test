@@ -8,7 +8,7 @@ jobs:
     steps:
       - uses: actions/checkout@v3
       # < your build process here >
-      - name: Protect with Jscrambler
+      - name: Protect with Jscrambler2
         id: jscrambler
         uses: jscrambler/code-integrity-actions/protect@v6
         with:
