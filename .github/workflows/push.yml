@@ -17,8 +17,8 @@ jobs:
           access-key: ${{ secrets.JSCRAMBLER_ACCESS_KEY }}
           jscrambler-config-path: jscrambler.json
           files-src: |
-            dist/*
-            dist/**/*
+            actiontest/*
+            actiontest/**/*
           files-dest: dist-obfuscated/
       - name: Upload protected code as a GitHub artifact
         uses: actions/upload-artifact@v3
