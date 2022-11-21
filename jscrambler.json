@@ -61,7 +61,7 @@
   ],
   "areSubscribersOrdered": false,
   "useRecommendedOrder": true,
-  "jscramblerVersion": "7.2",
+  "jscramblerVersion": "7.3",
   "tolerateMinification": true,
   "profilingDataMode": "off",
   "useAppClassification": true,
