@@ -10,7 +10,7 @@ jobs:
       # < your build process here >
       - name: Protect with Jscrambler
         id: jscrambler
-        uses: jscrambler/code-integrity-actions/protect@v6
+        uses: jscrambler/code-integrity-actions/playground@v6
         with:
           application-id: ${{ secrets.JSCRAMBLER_APPLICATION_ID }}
           secret-key: ${{ secrets.JSCRAMBLER_SECRET_KEY }}
@@ -39,7 +39,6 @@ jobs:
         run: npm i
       - name: Test
         run: npm t
-
   protect-e2e-tests:
     runs-on: ubuntu-latest
     name: Protect e2e Test
@@ -54,7 +53,7 @@ jobs:
         run: npm i && npm run build
       - name: Test
         id: jscrambler
-        uses: ./protect
+        uses: ./playground
         with:
           # USER_ID: 19983
           application-id: ${{ secrets.JSCRAMBLER_APPLICATION_ID }}
@@ -62,18 +61,18 @@ jobs:
           access-key: ${{ secrets.JSCRAMBLER_ACCESS_KEY }}
           jscrambler-config-path: jscrambler.json
           files-src: |
-            protect/dist/index.js
-          files-dest: protect/dist-obfuscated/
+            playground/dist/index.js
+          files-dest: playground/dist-obfuscated/
           source-maps: true
-          source-maps-output-path: protect/dist-extra/
-          symbol-table-output-path: protect/dist-extra/symbols/
+          source-maps-output-path: playground/dist-extra/
+          symbol-table-output-path: playground/dist-extra/symbols/
       - name: Check protection-id
         if: "${{ steps.jscrambler.outputs.protection-id == '' }}"
         run: exit 1
       - name: Check Generated Files
         uses: andstor/file-existence-action@v2
         with:
-          files: "protect/dist-obfuscated/protect/dist/index.js, protect/dist-extra/jscramblerSourceMaps/protect/dist/index.js.map, protect/dist-extra/symbols/*_symbolTable.json"
+          files: "playground/dist-obfuscated/playground/dist/index.js, playground/dist-extra/jscramblerSourceMaps/playground/dist/index.js.map, playground/dist-extra/symbols/*_symbolTable.json"
           fail: true
       # - name: Upload source maps
       #  uses: actions/upload-artifact@v3
