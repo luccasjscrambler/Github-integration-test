@@ -66,7 +66,5 @@
   "profilingDataMode": "off",
   "useAppClassification": true,
   "browsers": {},
-  "sourceMaps": false,
-  "protocol": "https",
-  "host": "dev-api.jscrambler.com"
+  "sourceMaps": false
 }
